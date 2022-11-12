@@ -33,6 +33,7 @@ CTX.verify_mode = ssl.CERT_NONE
 PATH = os.path.abspath(os.path.dirname(__file__))
 
 
+
 def extract_domain(url) -> str:
     if not url or not re.match(
         "^(https?:\/\/(([a-zA-Z0-9]+-?)+\.)+[a-zA-Z]+)(:\d+)?(\/.*)?(\?.*)?(#.*)?$", url
@@ -106,12 +107,12 @@ def get_cookie(text) -> str:
     return cookie
 
 
-def config_load(filename) -> dict:
-    if not os.path.exists(filename) or os.path.isdir(filename):
-        return None
+#def config_load(filename) -> dict:
+#    if not os.path.exists(filename) or os.path.isdir(filename):
+#        return None
 
-    config = open(filename, "r").read()
-    return json.loads(config)
+#    config = open(filename, "r").read()
+#    return json.loads(config)
 
 
 def flow(domain, params, headers) -> bool:
@@ -148,8 +149,9 @@ def wrapper(args) -> bool:
 
 
 def main() -> None:
-    config = config_load(os.path.join(PATH, "config.json"))
-    params = config.get("domains", [])
+    url = os.environ['url']
+    email = os.environ['url']
+    password = os.environ['url']
 
     cpu_count = multiprocessing.cpu_count()
     num = len(params) if len(params) <= cpu_count else cpu_count
