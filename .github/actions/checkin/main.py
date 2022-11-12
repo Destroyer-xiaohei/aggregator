@@ -150,8 +150,8 @@ def wrapper(args) -> bool:
 
 def main() -> None:
     url = os.environ['url']
-    email = os.environ['url']
-    password = os.environ['url']
+    email = os.environ['email']
+    password = os.environ['password']
 
     cpu_count = multiprocessing.cpu_count()
     num = len(params) if len(params) <= cpu_count else cpu_count
